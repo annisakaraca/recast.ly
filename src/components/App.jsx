@@ -7,11 +7,21 @@ class App extends React.Component {
       selected: exampleVideoData[0]
     };
     this.handleSelect = this.handleSelect.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
+
   }
 
   handleSelect(selectedVid) {
     this.setState({
       selected: selectedVid
+    });
+  }
+
+  handleSearch(returnedVideoData) {
+    console.log(returnedVideoData);
+    this.setState({
+      videos: returnedVideoData,
+      selected: returnedVideoData[0]
     });
   }
 
@@ -21,7 +31,7 @@ class App extends React.Component {
       <div>
         <nav className="navbar">
           <div className="col-md-6 offset-md-3">
-            <div><h5><em>search</em> view goes here</h5></div>
+            <div><Search onSearch={this.handleSearch}/></div>
           </div>
         </nav>
         <div className="row">

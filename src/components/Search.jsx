@@ -1,7 +1,11 @@
-var Search = () => (
+var Search = (props) => (
   <div className="search-bar form-inline">
     <input className="form-control" type="text" />
-    <button className="btn hidden-sm-down">
+    <button className="btn hidden-sm-down" onClick={() => {
+      var userText = $('.form-control').val();
+      searchYouTube({key: YOUTUBE_API_KEY, q: userText, max: 5}, props.onSearch);
+      $('.form-control').val('');
+    }}>
       <span className="glyphicon glyphicon-search"></span>
     </button>
   </div>
