@@ -3,7 +3,7 @@ class App extends React.Component {
     super(props);
 
     this.state = {
-      videos: exampleVideoData,
+      videos: [],
       selected: exampleVideoData[0]
     };
     this.handleSelect = this.handleSelect.bind(this);
@@ -25,6 +25,9 @@ class App extends React.Component {
     });
   }
 
+  componentDidMount() {
+    searchYouTube({key: YOUTUBE_API_KEY, q:'messi', max: 5}, this.handleSearch);
+  }
 
   render() {
     return (
